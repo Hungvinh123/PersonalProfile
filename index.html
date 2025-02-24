@@ -24,7 +24,12 @@
   <link rel="stylesheet" href="css/main.css" type="text/css">
 
   <script src="js/modernizr.custom.js"></script>
- 
+ <!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>
@@ -480,8 +485,8 @@
                                   if (countdown <= 0) {
                                     clearInterval(countdownInterval);
                                     btn.innerText = originalText;
-                                    // Chuyển hướng sau khi đếm ngược xong
-                                    window.location.href = btn.getAttribute('data-href');
+                                    // Chuyển hướng sang tab mới sau khi đếm ngược xong
+                                    window.open(btn.getAttribute('data-href'), '_blank');
                                   } else {
                                     btn.innerText = countdown;
                                   }
@@ -490,6 +495,7 @@
                             });
                           });
                         </script>
+                        
                         
 
                         <div class="fw-default-row">Mua inbox riêng cho mình để tránh bị lừa</div>
@@ -1250,7 +1256,38 @@
     integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
     data-cf-beacon='{"rayId":"916d0d1d3dee8476","version":"2025.1.0","r":1,"serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"94b99c0576dc45bf9d669fb5e9256829","b":1}'
     crossorigin="anonymous"></script>
-    
+    <script>window.addEventListener('load', function() {
+      Swal.fire({
+          icon: 'success',
+          title: 'Thông báo',
+          html: `
+              <p><b style="color:red;">🔥 Chào Mừng Tới Website của Vinh Hoang</b></p>
+              <p><b style="color:red;">🔥 Hỗ Trợ Tạo Website, Tư Vấn Zalo 0828.86.2216</b></p>
+               <p><b style="color:black;">🔥 Admin có thể bận vào lúc 9h-16h, 19h-24h</b></p>
+          `,
+          showCancelButton: true,
+          confirmButtonText: 'Tắt trong 1h',
+          cancelButtonText: 'Cancel'
+      }).then((result) => {
+          if (result.isConfirmed) {
+              // Lưu trạng thái ẩn thông báo trong 1 giờ bằng Local Storage
+              localStorage.setItem('hideAlert', Date.now() + 60 * 60 * 1000);
+          }
+      });
+  });
+  
+  // Kiểm tra trạng thái ẩn thông báo
+  if (localStorage.getItem('hideAlert')) {
+      const hideUntil = localStorage.getItem('hideAlert');
+      if (Date.now() < hideUntil) {
+          // Nếu chưa hết 1h, không hiện thông báo
+          window.removeEventListener('load', this);
+      } else {
+          // Nếu đã hết 1h, xóa trạng thái và hiện lại thông báo
+          localStorage.removeItem('hideAlert');
+      }
+  }
+  </script>
 </body>
 
 <!-- Mirrored from lmpixels.com/demo/breezycv/dark/5/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Feb 2025 05:27:29 GMT -->
