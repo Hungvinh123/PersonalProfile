@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="css/main.css" type="text/css">
 
   <script src="js/modernizr.custom.js"></script>
+ 
 </head>
 
 <body>
@@ -189,13 +190,14 @@
                       <li>
                         <span class="title">e-mail</span>
                         <span class="value">
-                          <a href="mailto:hoangquangvinh0@gmail.com?subject=Liên%20hệ%20từ%20website&body=Xin%20chào,%0ATôi%20muốn%20liên%20hệ%20với%20bạn.">
+                          <a
+                            href="mailto:hoangquangvinh0@gmail.com?subject=Liên%20hệ%20từ%20website&body=Xin%20chào,%0ATôi%20muốn%20liên%20hệ%20với%20bạn.">
                             hoangquangvinh0@gmail.com
-                        </a>
-                        
+                          </a>
+
                         </span>
-                    </li>
-                    
+                      </li>
+
                       <li>
                         <span class="title">Phone</span>
                         <span class="value">+84828862216</span>
@@ -227,7 +229,9 @@
                         </div>
                         <div class="ci-text">
                           <h4>Software Development</h4>
-                          <p>I design and build robust software applications tailored to meet client needs. My focus is on writing clean, efficient, and scalable code to ensure optimal performance and maintainability.</p>
+                          <p>I design and build robust software applications tailored to meet client needs. My focus is
+                            on writing clean, efficient, and scalable code to ensure optimal performance and
+                            maintainability.</p>
                         </div>
                       </div>
                       <div class="info-block-w-icon">
@@ -236,7 +240,8 @@
                         </div>
                         <div class="ci-text">
                           <h4>Web Development</h4>
-                          <p>I create dynamic, responsive websites with an emphasis on user-centric design. Utilizing modern frameworks and technologies, I deliver seamless digital experiences.
+                          <p>I create dynamic, responsive websites with an emphasis on user-centric design. Utilizing
+                            modern frameworks and technologies, I deliver seamless digital experiences.
 
                           </p>
                         </div>
@@ -254,7 +259,9 @@
                         </div>
                         <div class="ci-text">
                           <h4>System Architecture</h4>
-                          <p>I architect system solutions that are both scalable and efficient, ensuring reliability and security. My approach includes thorough analysis and strategic planning to meet long-term business goals.</p>
+                          <p>I architect system solutions that are both scalable and efficient, ensuring reliability and
+                            security. My approach includes thorough analysis and strategic planning to meet long-term
+                            business goals.</p>
                         </div>
                       </div>
                       <div class="info-block-w-icon">
@@ -264,7 +271,9 @@
                         <div class="ci-text">
                           <h4>Project Management
                           </h4>
-                          <p>I lead and manage development projects from conception to deployment, ensuring timely delivery and high-quality standards. My leadership style is collaborative, fostering productive team dynamics and clear communication.</p>
+                          <p>I lead and manage development projects from conception to deployment, ensuring timely
+                            delivery and high-quality standards. My leadership style is collaborative, fostering
+                            productive team dynamics and clear communication.</p>
                         </div>
                       </div>
                     </div>
@@ -293,7 +302,9 @@
                         <img src="img/testimonials/testimonial-1.jpg" alt="Alex Smith">
                       </div>
                       <div class="text">
-                        <p>An exceptional Software Engineer who consistently delivers high-quality solutions. Their attention to detail and problem-solving skills are truly impressive. They always go above and beyond to ensure project success.</p>
+                        <p>An exceptional Software Engineer who consistently delivers high-quality solutions. Their
+                          attention to detail and problem-solving skills are truly impressive. They always go above and
+                          beyond to ensure project success.</p>
                       </div>
 
                       <div class="author-info">
@@ -312,7 +323,9 @@
                         <img src="img/testimonials/testimonial-2.jpg" alt="Alex Smith">
                       </div>
                       <div class="text">
-                        <p>Working with them has been a game-changer. Their expertise in web development and system architecture transformed our digital presence. Highly professional and always committed to excellence.</p>
+                        <p>Working with them has been a game-changer. Their expertise in web development and system
+                          architecture transformed our digital presence. Highly professional and always committed to
+                          excellence.</p>
                       </div>
 
                       <div class="author-info">
@@ -331,7 +344,8 @@
                         <img src="img/testimonials/testimonial-3.jpg" alt="Alex Smith">
                       </div>
                       <div class="text">
-                        <p>Their ability to simplify complex problems and implement effective solutions is remarkable. They are not just a developer but also a strategic thinker who understands business needs.</p>
+                        <p>Their ability to simplify complex problems and implement effective solutions is remarkable.
+                          They are not just a developer but also a strategic thinker who understands business needs.</p>
                       </div>
 
                       <div class="author-info">
@@ -438,7 +452,8 @@
                         </div>
 
                         <div class="fw-button-row">
-                          <a href="https://www.facebook.com/VinhHoangz" target="_blank" class="btn btn-secondary">Buy Now</a>
+                          <a href="https://www.facebook.com/VinhHoangz" target="_blank" class="btn btn-secondary">Buy
+                            Now</a>
                         </div>
 
                         <div class="fw-default-row">Mua inbox riêng cho mình để tránh bị lừa</div>
@@ -492,13 +507,45 @@
                   <div class="fun-fact gray-default">
                     <i class="lnr lnr-heart"></i>
                     <h4>Happy Clients</h4>
-                    <span class="fun-fact-block-value">3.5M
-
-                    </span>
+                    <span id="happyClients" class="fun-fact-block-value">1,000,000</span>
                     <span class="fun-fact-block-text"></span>
                   </div>
+                  <script>
+                    // Hàm tự động tăng số Happy Clients
+                    function autoIncreaseHappyClients() {
+                      const happyClientsElement = document.getElementById('happyClients');
+                      let happyClientsCount = parseInt(happyClientsElement.innerText.replace(/[^0-9]/g, ''));
+                  
+                      // Nếu không phải số thì đặt lại là 1 triệu
+                      if (isNaN(happyClientsCount)) {
+                        happyClientsCount = 1000000;
+                      }
+                  
+                      happyClientsCount+=34;
+                      happyClientsElement.innerText = happyClientsCount.toLocaleString();
+                  
+                      // Lưu giá trị mới vào Local Storage
+                      localStorage.setItem('happyClientsCount', happyClientsCount);
+                    }
+                  
+                    // Khi trang tải lại, lấy dữ liệu từ Local Storage
+                    window.onload = function() {
+                      const savedCount = localStorage.getItem('happyClientsCount');
+                      const happyClientsElement = document.getElementById('happyClients');
+                  
+                      // Nếu có dữ liệu thì hiển thị, nếu không thì bắt đầu từ 1 triệu
+                      if (savedCount) {
+                        happyClientsElement.innerText = parseInt(savedCount).toLocaleString();
+                      } else {
+                        happyClientsElement.innerText = '1,000,000';
+                        localStorage.setItem('happyClientsCount', 1000000); // Lưu giá trị khởi đầu là 1 triệu
+                      }
+                  
+                      // Tự động tăng sau mỗi 1 giây (1000ms)
+                      setInterval(autoIncreaseHappyClients, 1000);
+                    };
+                  </script>
                 </div>
-
                 <div class="col-xs-12 col-sm-4">
                   <div class="fun-fact gray-default">
                     <i class="lnr lnr-clock"></i>
