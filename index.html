@@ -77,7 +77,7 @@
           <li>
             <a href="#portfolio" class="nav-anim">
               <span class="menu-icon lnr lnr-briefcase"></span>
-              <span class="link-text">Portfolio</span>  
+              <span class="link-text">Music</span>  
             </a>
           </li>
           <!-- <li>
@@ -460,9 +460,37 @@
                         </div>
 
                         <div class="fw-button-row">
-                          <a href="https://www.facebook.com/VinhHoangz" target="_blank" class="btn btn-secondary">Buy
-                            Now</a>
+                          <a href="https://www.facebook.com/VinhHoangz" target="_blank" class="btn btn-secondary countdown-btn" data-href="https://www.facebook.com/VinhHoangz">Buy Now</a>
+
                         </div>
+                        <script>
+                          document.addEventListener("DOMContentLoaded", function () {
+                            // Lấy tất cả các nút có class là countdown-btn
+                            const countdownBtns = document.querySelectorAll('.countdown-btn');
+                        
+                            countdownBtns.forEach(function (btn) {
+                              btn.addEventListener('click', function (event) {
+                                event.preventDefault(); // Ngăn không cho chuyển trang ngay lập tức
+                                let countdown = 3; // Đếm ngược từ 3
+                                const originalText = btn.innerText; // Lưu lại text ban đầu của nút
+                                btn.innerText = countdown;
+                        
+                                const countdownInterval = setInterval(function () {
+                                  countdown--;
+                                  if (countdown <= 0) {
+                                    clearInterval(countdownInterval);
+                                    btn.innerText = originalText;
+                                    // Chuyển hướng sau khi đếm ngược xong
+                                    window.location.href = btn.getAttribute('data-href');
+                                  } else {
+                                    btn.innerText = countdown;
+                                  }
+                                }, 1000); // Mỗi giây đếm ngược 1 lần
+                              });
+                            });
+                          });
+                        </script>
+                        
 
                         <div class="fw-default-row">Mua inbox riêng cho mình để tránh bị lừa</div>
                         <div class="fw-default-row">BH 12 tháng</div>
@@ -875,7 +903,7 @@
           <!-- Portfolio Subpage -->
           <section data-id="portfolio" class="animated-section">
             <div class="page-title">
-              <h2>Portfolio</h2>
+              <h2>Music</h2>
             </div>
 
             <div class="section-content">
@@ -887,7 +915,7 @@
 
                     <ul class="portfolio-filters">
                       <li class="active">
-                        <a class="filter btn btn-sm btn-link" data-group="category_soundcloud">SoundCloud</a>
+                        <a class="filter btn btn-sm btn-link" data-group="category_soundcloud">SoundCloud cover by Vinh Hoang</a>
                       </li>
                     </ul>
                     
