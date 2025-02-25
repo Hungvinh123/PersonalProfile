@@ -13,7 +13,7 @@
   <meta name="author" content="lmpixels" />
   <link rel="shortcut icon" href="favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+  
 
   <link rel="stylesheet" href="css/reset.css" type="text/css">
   <link rel="stylesheet" href="css/bootstrap-grid.min.css" type="text/css">
@@ -117,9 +117,11 @@
           </ul>
         </div>
 
-        <!-- <div class="header-buttons">
-              <a href="#" target="_blank" class="btn btn-primary">Download CV</a>
-            </div> -->
+        <div class="header-buttons">
+          <a href="#about-me" class="btn btn-primary" onclick="scrollToSection(event)">Đặt lịch với Admin ngay</a>
+        </div>
+       
+      
 
         <div class="copyrights">© 2025 All rights reserved.</div>
       </header>
@@ -381,7 +383,7 @@
               <div class="row">
                 <div class="col-xs-12 col-sm-12">
                   <div class="block-title">
-                    <h3>Cilents</h3>
+                    <h3>Clients</h3>
                   </div>
                 </div>
               </div>
@@ -1261,13 +1263,13 @@
           icon: 'success',
           title: 'Thông báo',
           html: `
-              <p><b style="color:red;">🔥 Chào Mừng Tới Website của Vinh Hoang</b></p>
-              <p><b style="color:red;">🔥 Hỗ Trợ Tạo Website, Tư Vấn Zalo 0828.86.2216</b></p>
-               <p><b style="color:black;">🔥 Admin có thể bận vào lúc 9h-16h, 19h-24h</b></p>
-          `,
+        <p style="font-family: 'Roboto', sans-serif;"><b style="color:red;">🔥 Chào Mừng Tới Website của Vinh Hoang</b></p>
+        <p style="font-family: 'Roboto', sans-serif;"><b style="color:red;">🔥 Hỗ Trợ Tạo Website, Tư Vấn Zalo 0828.86.2216</b></p>
+        <p style="font-family: 'Roboto', sans-serif;"><b style="color:black;">🔥 Admin có thể bận vào lúc 9h-16h, 19h-24h</b></p>
+    `,
           showCancelButton: true,
-          confirmButtonText: 'Tắt trong 1h',
-          cancelButtonText: 'Cancel'
+        // confirmButtonText: 'Tắt trong 1h',
+        // cancelButtonText: 'Cancel',
       }).then((result) => {
           if (result.isConfirmed) {
               // Lưu trạng thái ẩn thông báo trong 1 giờ bằng Local Storage
@@ -1287,9 +1289,9 @@
           localStorage.removeItem('hideAlert');
       }
   }
+  
   </script>
 </body>
 
-<!-- Mirrored from lmpixels.com/demo/breezycv/dark/5/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Feb 2025 05:27:29 GMT -->
 
 </html>
