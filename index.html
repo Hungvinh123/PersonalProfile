@@ -13,7 +13,8 @@
   <meta name="author" content="lmpixels" />
   <link rel="shortcut icon" href="favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
 
   <link rel="stylesheet" href="css/reset.css" type="text/css">
   <link rel="stylesheet" href="css/bootstrap-grid.min.css" type="text/css">
@@ -1260,35 +1261,53 @@
     crossorigin="anonymous"></script>
     <script>window.addEventListener('load', function() {
       Swal.fire({
-          icon: 'success',
+          icon: 'warning',
           title: 'Thông báo',
           html: `
-        <p style="font-family: 'Roboto', sans-serif;"><b style="color:red;">🔥 Chào Mừng Tới Website của Vinh Hoang</b></p>
-        <p style="font-family: 'Roboto', sans-serif;"><b style="color:red;">🔥 Hỗ Trợ Tạo Website, Tư Vấn Zalo 0828.86.2216</b></p>
-        <p style="font-family: 'Roboto', sans-serif;"><b style="color:black;">🔥 Admin có thể bận vào lúc 9h-16h, 19h-24h</b></p>
-    `,
+              <p><b style="color:red;">🔥 Update Kho Acc Khổng Lồ, Bao Rẻ</b></p>
+              <p><b style="color:red;">🔥 Hỗ Trợ Nhập Acc, Tư Vấn Zalo 0379.62.6666</b></p>
+          `,
           showCancelButton: true,
-        // confirmButtonText: 'Tắt trong 1h',
-        // cancelButtonText: 'Cancel',
+          confirmButtonText: 'Tắt trong 1h',
+          cancelButtonText: 'Cancel',
+          background: '#f0f8ff',
+          color: '#333',
       }).then((result) => {
+          // Kiểm tra nếu người dùng nhấn "Tắt trong 1h"
           if (result.isConfirmed) {
-              // Lưu trạng thái ẩn thông báo trong 1 giờ bằng Local Storage
               localStorage.setItem('hideAlert', Date.now() + 60 * 60 * 1000);
           }
+          
+          // Thêm hiệu ứng pháo hoa khi tắt modal
+          fireworkEffect();
       });
   });
   
-  // Kiểm tra trạng thái ẩn thông báo
-  if (localStorage.getItem('hideAlert')) {
-      const hideUntil = localStorage.getItem('hideAlert');
-      if (Date.now() < hideUntil) {
-          // Nếu chưa hết 1h, không hiện thông báo
-          window.removeEventListener('load', this);
-      } else {
-          // Nếu đã hết 1h, xóa trạng thái và hiện lại thông báo
-          localStorage.removeItem('hideAlert');
-      }
+  // Hàm tạo hiệu ứng pháo hoa
+  function fireworkEffect() {
+      var end = Date.now() + 2 * 1000; // Hiệu ứng trong 2 giây
+  
+      // Tạo hiệu ứng lặp lại
+      (function frame() {
+          confetti({
+              particleCount: 5,
+              angle: 60,
+              spread: 55,
+              origin: { x: 0 }
+          });
+          confetti({
+              particleCount: 5,
+              angle: 120,
+              spread: 55,
+              origin: { x: 1 }
+          });
+  
+          if (Date.now() < end) {
+              requestAnimationFrame(frame);
+          }
+      }());
   }
+  
   
   </script>
 </body>

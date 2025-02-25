@@ -6,6 +6,7 @@
 */
 
 (function($) {
+    
 "use strict";
     // Portfolio subpage filters
     function portfolio_init() {
