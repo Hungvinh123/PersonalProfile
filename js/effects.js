@@ -347,7 +347,7 @@
   function initTilt() {
     if (window.innerWidth < 1025) return;
 
-    var cards = document.querySelectorAll('.tool-card');
+    var cards = document.querySelectorAll('.tool-card, .fw-package, .info-block-w-icon, .fun-fact');
     cards.forEach(function (card) {
       card.addEventListener('mousemove', function (e) {
         var rect = card.getBoundingClientRect();
@@ -355,9 +355,9 @@
         var y = e.clientY - rect.top;
         var centerX = rect.width / 2;
         var centerY = rect.height / 2;
-        var rotateX = (y - centerY) / 20;
-        var rotateY = (centerX - x) / 20;
-        card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-10px)';
+        var rotateX = (y - centerY) / 15; // Increased sensitivity
+        var rotateY = (centerX - x) / 15;
+        card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-12px)';
       });
 
       card.addEventListener('mouseleave', function () {

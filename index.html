@@ -54,10 +54,18 @@
   <!-- Particle Canvas Background -->
   <canvas id="particles-canvas"></canvas>
 
-  <!-- Floating Orbs -->
+  <!-- Floating Orbs & Geometry -->
   <div class="floating-orb orb-1"></div>
   <div class="floating-orb orb-2"></div>
   <div class="floating-orb orb-3"></div>
+  <div class="geometry-shape"
+    style="top: 15%; left: 5%; width: 50px; height: 50px; border: 2px solid var(--primary); border-radius: 10px;"></div>
+  <div class="geometry-shape"
+    style="top: 70%; right: 5%; width: 80px; height: 80px; border: 2px solid var(--secondary); transform: rotate(45deg);">
+  </div>
+  <div class="geometry-shape"
+    style="top: 40%; left: 50%; width: 30px; height: 30px; background: var(--accent); border-radius: 50%; opacity: 0.05;">
+  </div>
 
   <!-- Custom Cursor -->
   <div class="cursor-dot"></div>
@@ -91,28 +99,28 @@
               <span>Đang hoạt động</span>
             </div>
           </div>
-        </div>
 
-        <ul class="main-menu">
-          <li class="active">
-            <a href="#home" class="nav-anim">
-              <span class="menu-icon lnr lnr-home"></span>
-              <span class="link-text">Home</span>
-            </a>
-          </li>
-          <li>
-            <a href="#about-me" class="nav-anim">
-              <span class="menu-icon lnr lnr-user"></span>
-              <span class="link-text">About Me</span>
-            </a>
-          </li>
-          <li>
-            <a href="#portfolio" class="nav-anim">
-              <span class="menu-icon lnr lnr-cart"></span>
-              <span class="link-text">Mua Tool</span>
-            </a>
-          </li>
-        </ul>
+          <ul class="main-menu">
+            <li class="active">
+              <a href="#home" class="nav-anim">
+                <span class="menu-icon lnr lnr-home"></span>
+                <span class="link-text">Home</span>
+              </a>
+            </li>
+            <li>
+              <a href="#about-me" class="nav-anim">
+                <span class="menu-icon lnr lnr-user"></span>
+                <span class="link-text">About Me</span>
+              </a>
+            </li>
+            <li>
+              <a href="#portfolio" class="nav-anim">
+                <span class="menu-icon lnr lnr-cart"></span>
+                <span class="link-text">Mua Tool</span>
+              </a>
+            </li>
+          </ul>
+        </div>
 
         <div class="social-links">
           <ul>
@@ -135,7 +143,9 @@
           <a href="#portfolio" class="btn btn-primary open-qr-modal">🛒 Đặt Tool Ngay</a>
         </div>
 
-        <div class="copyrights">© 2026 Vinh Hoang. All rights reserved.</div>
+        <div class="copyrights">
+          <p>© 2026 <strong>Vinh Hoang</strong>. All rights reserved.</p>
+        </div>
       </header>
 
       <!-- Mobile Navigation -->
@@ -159,31 +169,71 @@
             <div class="section-content vcentered">
               <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12">
-                  <div class="title-block">
-                    <h2 class="gradient-text"
-                      style="font-size: 48px; font-weight: 900; display: flex; align-items: center; justify-content: center; gap: 15px;">
-                      Vinh Hoang
-                      <span class="verified-badge-large" title="Verified Account"><i
-                          class="fas fa-check-circle"></i></span>
-                    </h2>
-                    <div style="margin-top: 15px;">
-                      <span class="sp-subtitle" style="font-size: 22px; color: #a0a0b0;">
-                        <span id="typing-text"></span><span class="typing-cursor"></span>
-                      </span>
+                  <div class="hero-glass-card reveal">
+                    <div class="hero-content">
+                      <div class="hero-badge animate__animated animate__fadeInDown">
+                        <span class="pulse-dot"></span>
+                        <span class="hero-badge-text">Đang nhận yêu cầu Tool</span>
+                      </div>
+
+                      <h2 class="hero-title animate__animated animate__fadeInUp">
+                        Vinh Hoang <span class="verified-badge-xl"><i class="fas fa-check-circle"></i></span>
+                      </h2>
+
+                      <div class="hero-subtitle-wrapper">
+                        <span class="sp-subtitle">
+                          <span id="typing-text"></span><span class="typing-cursor"></span>
+                        </span>
+                      </div>
+
+                      <p class="hero-description reveal">
+                        Cung cấp hệ sinh thái công cụ hỗ trợ thông minh, tối ưu hóa hiệu suất và nâng tầm trải nghiệm
+                        người dùng.
+                        Công nghệ tự động hóa, thanh toán 1 chạm ⚡
+                      </p>
+
+                      <!-- Hero Stats Bar -->
+                      <div class="hero-stats-bar reveal">
+                        <div class="h-stat-item">
+                          <div class="h-stat-icon" style="color: var(--primary);"><i class="fas fa-users"></i></div>
+                          <div class="h-stat-info">
+                            <span class="h-stat-val counter-value" data-target="500">0</span><span class="plus">+</span>
+                            <span class="h-stat-label">Khách hàng</span>
+                          </div>
+                        </div>
+                        <div class="h-stat-sep"></div>
+                        <div class="h-stat-item">
+                          <div class="h-stat-icon" style="color: var(--secondary);"><i class="fas fa-tools"></i></div>
+                          <div class="h-stat-info">
+                            <span class="h-stat-val counter-value" data-target="15">0</span><span class="plus">+</span>
+                            <span class="h-stat-label">Công cụ hot</span>
+                          </div>
+                        </div>
+                        <div class="h-stat-sep"></div>
+                        <div class="h-stat-item">
+                          <div class="h-stat-icon" style="color: var(--accent-2);"><i class="fas fa-bolt"></i></div>
+                          <div class="h-stat-info">
+                            <span class="h-stat-val">24/7</span>
+                            <span class="h-stat-label">Hỗ trợ nhanh</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="hero-actions">
+                        <a href="#portfolio" class="btn-hero btn-hero-primary nav-anim">
+                          <div class="btn-shine"></div>
+                          <i class="fas fa-rocket"></i> Bắt đầu ngay
+                        </a>
+                        <a href="https://www.facebook.com/VinhHoangz" target="_blank" class="btn-hero btn-hero-outline">
+                          <i class="fab fa-facebook-messenger"></i> Trò chuyện Admin
+                        </a>
+                      </div>
                     </div>
-                    <p style="margin-top: 25px; color: #666; max-width: 500px; line-height: 1.8; font-size: 15px;">
-                      Chuyên cung cấp tool chất lượng cao ✨ Thanh toán nhanh qua QR ⚡ Tải tool tự động sau khi thanh
-                      toán
-                    </p>
-                    <div style="margin-top: 35px; display: flex; gap: 15px; flex-wrap: wrap;">
-                      <a href="#portfolio" class="btn btn-primary nav-anim"
-                        style="padding: 14px 32px; border-radius: 14px; font-weight: 600;">
-                        <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i> Xem Tool
-                      </a>
-                      <a href="https://www.facebook.com/VinhHoangz" target="_blank" class="btn btn-secondary"
-                        style="padding: 14px 32px; border-radius: 14px; font-weight: 600; border-color: rgba(108,99,255,0.4); color: #6C63FF;">
-                        <i class="fab fa-facebook-messenger" style="margin-right: 8px;"></i> Liên hệ Admin
-                      </a>
+
+                    <!-- Floating visual elements inside hero -->
+                    <div class="hero-visuals">
+                      <div class="hero-shape shape-1"></div>
+                      <div class="hero-shape shape-2"></div>
                     </div>
                   </div>
                 </div>
@@ -463,45 +513,72 @@
     </div>
   </div>
 
-  <!-- ==================== QR PAYMENT MODAL ==================== -->
   <div class="qr-modal-overlay" id="qr-modal-overlay">
     <div class="qr-modal">
       <button class="qr-modal-close">&times;</button>
-      <h3>💳 Thanh Toán QR</h3>
-      <p class="qr-subtitle">Quét mã QR bên dưới để thanh toán</p>
-      <div class="qr-price">100.000₫ <br><small>IDR Setup Tool</small></div>
-      <div class="qr-image-wrapper">
-        <img src="img/QR.jpg" alt="QR Thanh Toán">
-      </div>
-      <div class="qr-instructions">
-        📱 Mở app <strong>Ngân hàng / Momo</strong> quét mã<br>
-        💬 Nội dung CK: <strong>Họ tên + muatool</strong><br>
-        📸 Chụp ảnh bill sau khi chuyển thành công
+
+      <div class="qr-modal-header">
+        <h3>💳 Thanh Toán QR</h3>
+        <p class="qr-subtitle">Quét mã QR bên dưới để hoàn tất đơn hàng</p>
       </div>
 
-      <div class="manual-verify-section">
-        <a href="https://zalo.me/84828862216" target="_blank" class="btn-zalo-verify">
-          <i class="fab fa-whatsapp"></i> Gửi Bill qua Zalo (Admin)
-        </a>
+      <div class="qr-modal-content-wrapper">
+        <!-- Left Column: QR Image -->
+        <div class="qr-modal-left">
+          <div class="qr-price-badge">100.000₫</div>
+          <div class="qr-image-wrapper">
+            <img src="img/QR.jpg" alt="QR Thanh Toán">
+            <div class="qr-scan-line"></div>
+          </div>
+          <div class="qr-item-name">IDR Setup Tool</div>
+        </div>
 
-        <div class="verify-input-group">
-          <label>Nhập mã tải tool (Admin cấp sau khi nhận bill):</label>
-          <div class="input-wrapper">
-            <input type="text" id="tool-code-input" placeholder="Nhập mã tại đây..." autocomplete="off">
-            <button id="btn-verify-code">Xác minh</button>
+        <!-- Right Column: Instructions and Verification -->
+        <div class="qr-modal-right">
+          <div class="qr-instructions-card">
+            <div class="instruction-item">
+              <i class="fas fa-mobile-alt"></i>
+              <span>Mở app <strong>Ngân hàng / Momo</strong> quét mã</span>
+            </div>
+            <div class="instruction-item">
+              <i class="fas fa-comment-dots"></i>
+              <span>Nội dung CK: <strong>Họ tên + muatool</strong></span>
+            </div>
+            <div class="instruction-item">
+              <i class="fas fa-camera"></i>
+              <span>Chụp ảnh bill sau khi chuyển thành công</span>
+            </div>
+          </div>
+
+          <div class="manual-verify-section">
+            <div class="verify-actions">
+              <a href="https://zalo.me/84828862216" target="_blank" class="btn-zalo-verify">
+                <i class="fab fa-whatsapp"></i> Gửi Bill qua Zalo (Admin)
+              </a>
+            </div>
+
+            <div class="verify-input-group">
+              <label>Mã tải tool (Admin cấp sau khi nhận bill):</label>
+              <div class="input-wrapper">
+                <input type="text" id="tool-code-input" placeholder="Nhập mã tại đây..." autocomplete="off">
+                <button id="btn-verify-code">Xác minh</button>
+              </div>
+            </div>
+
+            <div id="download-unlock-area" style="display: none; margin-top: 15px; animation: fadeIn 0.5s ease;">
+              <a href="IDR_Setup.zip" download class="btn-download">
+                <i class="fas fa-download"></i> Tải Tool Ngay (Bản Fix)
+              </a>
+            </div>
           </div>
         </div>
-
-        <div id="download-unlock-area" style="display: none; margin-top: 20px; animation: fadeIn 0.5s ease;">
-          <a href="IDR_Setup.zip" download class="btn-download">
-            <i class="fas fa-download"></i> Tải Tool Ngay (Bản Fix)
-          </a>
-        </div>
       </div>
 
-      <div class="countdown-info">
-        ⚠️ Admin sẽ cấp mã ngay sau khi xác nhận bill.<br>
-        Hỗ trợ nhanh: <strong>Zalo 0828.86.2216</strong>
+      <div class="qr-modal-footer">
+        <div class="countdown-info">
+          <i class="fas fa-shield-alt"></i>
+          <span>Admin sẽ cấp mã ngay sau khi xác nhận bill. Hỗ trợ: <strong>0828.86.2216</strong></span>
+        </div>
       </div>
     </div>
   </div>
