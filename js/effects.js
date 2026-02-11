@@ -2,7 +2,7 @@
    PREMIUM EFFECTS JS - Tool Store
    ============================================ */
 
-(function() {
+(function () {
   'use strict';
 
   // ========================
@@ -22,7 +22,7 @@
     resize();
     window.addEventListener('resize', resize);
 
-    document.addEventListener('mousemove', function(e) {
+    document.addEventListener('mousemove', function (e) {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
     });
@@ -92,7 +92,7 @@
 
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(function(p) {
+      particles.forEach(function (p) {
         p.update();
         p.draw();
       });
@@ -115,7 +115,7 @@
     let mouseX = 0, mouseY = 0;
     let ringX = 0, ringY = 0;
 
-    document.addEventListener('mousemove', function(e) {
+    document.addEventListener('mousemove', function (e) {
       mouseX = e.clientX;
       mouseY = e.clientY;
       dot.style.left = mouseX - 4 + 'px';
@@ -133,9 +133,9 @@
 
     // Hover effect on interactive elements
     var hoverElements = document.querySelectorAll('a, button, .btn, input[type="submit"], .tool-card, .fw-package');
-    hoverElements.forEach(function(el) {
-      el.addEventListener('mouseenter', function() { ring.classList.add('hover'); });
-      el.addEventListener('mouseleave', function() { ring.classList.remove('hover'); });
+    hoverElements.forEach(function (el) {
+      el.addEventListener('mouseenter', function () { ring.classList.add('hover'); });
+      el.addEventListener('mouseleave', function () { ring.classList.remove('hover'); });
     });
   }
 
@@ -186,15 +186,15 @@
     var reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
     if (!reveals.length) return;
 
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
         }
       });
     }, { threshold: 0.1 });
 
-    reveals.forEach(function(el) {
+    reveals.forEach(function (el) {
       observer.observe(el);
     });
   }
@@ -207,7 +207,7 @@
     if (!overlay) return;
 
     // Open modal
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
       var btn = e.target.closest('.open-qr-modal');
       if (btn) {
         e.preventDefault();
@@ -217,7 +217,7 @@
     });
 
     // Close modal
-    overlay.addEventListener('click', function(e) {
+    overlay.addEventListener('click', function (e) {
       if (e.target === overlay || e.target.closest('.qr-modal-close')) {
         overlay.classList.remove('active');
         document.body.style.overflow = '';
@@ -225,12 +225,77 @@
     });
 
     // ESC key
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && overlay.classList.contains('active')) {
         overlay.classList.remove('active');
         document.body.style.overflow = '';
       }
     });
+
+    // Code Verification Logic
+    const verifyBtn = document.getElementById('btn-verify-code');
+    const codeInput = document.getElementById('tool-code-input');
+    const downloadArea = document.getElementById('download-unlock-area');
+    const CORRECT_CODE = 'VINHHOANGCHESS';
+
+    if (verifyBtn && codeInput && downloadArea) {
+      verifyBtn.addEventListener('click', function () {
+        const enteredCode = codeInput.value.trim().toUpperCase();
+
+        if (enteredCode === '') {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Opps!',
+            text: 'Vui lòng nhập mã tải tool!',
+            background: '#1a1a2e',
+            color: '#fff',
+            confirmButtonColor: '#6C63FF'
+          });
+          return;
+        }
+
+        if (enteredCode === CORRECT_CODE) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Xác minh thành công!',
+            text: 'Bạn có thể tải tool ngay bây giờ.',
+            background: '#1a1a2e',
+            color: '#fff',
+            confirmButtonColor: '#00D4AA'
+          });
+
+          downloadArea.style.display = 'block';
+          verifyBtn.disabled = true;
+          verifyBtn.style.opacity = '0.5';
+          codeInput.disabled = true;
+
+          // Confetti for success
+          confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ['#6C63FF', '#00D4AA', '#FECA57']
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Sai mã!',
+            text: 'Mã không đúng hoặc đã hết hạn. Vui lòng liên hệ Admin!',
+            background: '#1a1a2e',
+            color: '#fff',
+            confirmButtonColor: '#FF6B6B'
+          });
+          codeInput.value = '';
+        }
+      });
+
+      // Enter key support
+      codeInput.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+          verifyBtn.click();
+        }
+      });
+    }
   }
 
   // ========================
@@ -240,8 +305,8 @@
     var counters = document.querySelectorAll('.counter-value');
     if (!counters.length) return;
 
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
         if (entry.isIntersecting && !entry.target.dataset.counted) {
           entry.target.dataset.counted = 'true';
           animateCounter(entry.target);
@@ -249,7 +314,7 @@
       });
     }, { threshold: 0.5 });
 
-    counters.forEach(function(el) {
+    counters.forEach(function (el) {
       observer.observe(el);
     });
   }
@@ -283,8 +348,8 @@
     if (window.innerWidth < 1025) return;
 
     var cards = document.querySelectorAll('.tool-card');
-    cards.forEach(function(card) {
-      card.addEventListener('mousemove', function(e) {
+    cards.forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
         var rect = card.getBoundingClientRect();
         var x = e.clientX - rect.left;
         var y = e.clientY - rect.top;
@@ -295,7 +360,7 @@
         card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-10px)';
       });
 
-      card.addEventListener('mouseleave', function() {
+      card.addEventListener('mouseleave', function () {
         card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
       });
     });
@@ -304,9 +369,9 @@
   // ========================
   // INIT ALL
   // ========================
-  window.addEventListener('load', function() {
+  window.addEventListener('load', function () {
     // Small delay to let page render
-    setTimeout(function() {
+    setTimeout(function () {
       initParticles();
       initCursor();
       initTyping();
