@@ -1,0 +1,9 @@
+# Ignore large backup/tool files
+IDR_Setup.zip
+IDR_Setup/
+*.zip
+*.exe
+*.rar
+node_modules/
+.DS_Store
+Thumbs.db
